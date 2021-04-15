@@ -500,12 +500,13 @@ body {
   align-items: center;
 }
 .img {
-  height: 200px;
-  width: 200px;
+  height: 350px;
+  width: 100%;
   padding: 0px;
   border-radius: 10px;
   box-shadow: 1px 1px 15px 5px #00000035;
   margin: 10px;
+  object-fit: cover;
 }
 
 .img-data {
