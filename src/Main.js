@@ -6,46 +6,29 @@ import Pro from "./pages/Porfile";
 import Projects from "./pages/Projects";
 import Nav from "./pages/resource/NavBar";
 import Burger from "./pages/resource/Burger";
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { BrowserRouter as Router, Route} from "react-router-dom";
 
 
 
-  const Main = () => {  
+  const Main = ({handleLogOut}) => {  
+
     let d = new Date();
     let hours = d.getHours();
     let mins = d.getMinutes();
     let date = d.getDate();
     let year = d.getFullYear();
     let month = d.getMonth()+1;
-
-    const [loading, setLoading] = useState(false);
     
-    useEffect(() => {
-      setLoading(true)
-      setTimeout(() => {
-        setLoading(false)
-      }, 1000)
-
-    }, [])
-
     return (
     <div className="App">
-
-    {loading ?
-      (
-      <div className="middle">
-      <div className="loader">Loading...</div>
-      </div>
-      )
-      :
-      ( 
       <Router>
       <Burger/>  
       <div className="main">
       
-          <Nav/>
-        
-          <Switch>
+          <Nav
+          handleLogOut={handleLogOut}
+          />
+             
             <div className='view'>
               <Route path="/Dash" component={Dash}/>
               <Route path="/Att" component={At}/>
@@ -53,7 +36,6 @@ import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
               <Route path="/Profile" component={Pro}/>
               <Route path="/Projects" component={Projects}/>
             </div>
-          </Switch>
           
       </div>
       
@@ -63,10 +45,8 @@ import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
       Copyright - 2021 . SuperVisor
       </div>
 
-      </Router>    
+      </Router>        
     
-      )    
-    }
     </div>
   );
 }
